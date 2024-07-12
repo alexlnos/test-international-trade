@@ -1,0 +1,61 @@
+basePath: /
+definitions:
+  domain.EncryptRequest:
+    properties:
+      input:
+        type: string
+    type: object
+  domain.EncryptedData:
+    properties:
+      input:
+        type: string
+      md5:
+        type: string
+      sha256:
+        type: string
+    type: object
+host: localhost:8080
+info:
+  contact:
+    email: support@swagger.io
+    name: API Support
+    url: http://www.swagger.io/support
+  description: This is a service for encrypting strings using MD5 and SHA256 algorithms
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: Encryption Service API
+  version: "1.0"
+paths:
+  /encrypt:
+    post:
+      consumes:
+      - application/json
+      description: Encrypts a string using MD5 and SHA256 algorithms
+      parameters:
+      - description: Input string to encrypt
+        in: body
+        name: input
+        required: true
+        schema:
+          $ref: '#/definitions/domain.EncryptRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/domain.EncryptedData'
+        "400":
+          description: Invalid input
+          schema:
+            type: string
+        "500":
+          description: Internal server error
+          schema:
+            type: string
+      summary: Encrypt a string
+      tags:
+      - encryption
+swagger: "2.0"

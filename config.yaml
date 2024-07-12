@@ -1,0 +1,2 @@
+ServerPort: 8080
+RedisAddr: 'redis:6379'
